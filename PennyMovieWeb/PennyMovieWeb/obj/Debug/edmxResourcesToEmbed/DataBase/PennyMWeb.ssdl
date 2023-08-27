@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PennyMovieLogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="JPMovieList">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MovieType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MovieName" Type="varchar" MaxLength="50" />
+    <Property Name="PublishYear" Type="int" />
+    <Property Name="ImgName" Type="varchar" MaxLength="50" />
+    <Property Name="ImgURL" Type="varchar(max)" />
+    <Property Name="Summary" Type="varchar(max)" />
+    <Property Name="Director" Type="varchar(max)" />
+    <Property Name="Trailer" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="MainMovie">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MovieType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Creator" Type="varchar" MaxLength="50" />
+    <Property Name="CreateDatetime" Type="datetime" />
+    <Property Name="SerialNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Modifier" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyDatetime" Type="datetime" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'PennyMovieLog.dbo.MemberList' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="MemberList">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="UserMima" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserMima" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="TWMovieList">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MovieType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PublishYear" Type="int" />
+    <Property Name="ImgName" Type="varchar" MaxLength="20" />
+    <Property Name="ImgURL" Type="varchar" MaxLength="100" />
+    <Property Name="Summary" Type="varchar(max)" />
+    <Property Name="Director" Type="varchar" MaxLength="50" />
+    <Property Name="MovieName" Type="varchar" MaxLength="50" />
+    <Property Name="Trailer" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="USAMovieList">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MovieType" Type="varchar" MaxLength="50" />
+    <Property Name="MovieName" Type="varchar" MaxLength="50" />
+    <Property Name="PublishYear" Type="int" />
+    <Property Name="ImgName" Type="varchar" MaxLength="50" />
+    <Property Name="ImgURL" Type="varchar(max)" />
+    <Property Name="Summary" Type="varchar(max)" />
+    <Property Name="Director" Type="varchar" MaxLength="50" />
+    <Property Name="Trailer" Type="varchar(max)" />
+  </EntityType>
+  <EntityContainer Name="PennyMovieLogModelStoreContainer">
+    <EntitySet Name="JPMovieList" EntityType="Self.JPMovieList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MainMovie" EntityType="Self.MainMovie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TWMovieList" EntityType="Self.TWMovieList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USAMovieList" EntityType="Self.USAMovieList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberList" EntityType="Self.MemberList" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MemberList].[UserID] AS [UserID], 
+    [MemberList].[UserName] AS [UserName], 
+    [MemberList].[UserMima] AS [UserMima], 
+    [MemberList].[UserEmail] AS [UserEmail]
+    FROM [dbo].[MemberList] AS [MemberList]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

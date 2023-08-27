@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PennyMovieLogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="JPMovieList">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MovieType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MovieName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PublishYear" Type="Int32" />
+    <Property Name="ImgName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImgURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Director" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Trailer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MainMovie">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MovieType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDatetime" Type="DateTime" Precision="3" />
+    <Property Name="SerialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Modifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDatetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TWMovieList">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MovieType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PublishYear" Type="Int32" />
+    <Property Name="ImgName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ImgURL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Director" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MovieName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Trailer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="USAMovieList">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MovieType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MovieName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PublishYear" Type="Int32" />
+    <Property Name="ImgName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImgURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Director" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Trailer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MemberList">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="UserMima" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserMima" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="PennyMovieLogEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="JPMovieList" EntityType="Self.JPMovieList" />
+    <EntitySet Name="MainMovie" EntityType="Self.MainMovie" />
+    <EntitySet Name="TWMovieList" EntityType="Self.TWMovieList" />
+    <EntitySet Name="USAMovieList" EntityType="Self.USAMovieList" />
+    <EntitySet Name="MemberList" EntityType="Self.MemberList" />
+  </EntityContainer>
+</Schema>

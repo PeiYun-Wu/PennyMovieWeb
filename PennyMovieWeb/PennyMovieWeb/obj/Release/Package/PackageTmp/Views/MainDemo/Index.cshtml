@@ -1,0 +1,46 @@
+﻿@using PennyMovieWeb.DataBase
+@model IEnumerable<TWMovieList>
+@{
+    ViewBag.Title = "MovieHomePage";
+}
+
+<body>
+
+    <h2>Penny's Index</h2>
+
+    <div class="container">
+        <div class="row">
+            @foreach(var item in Model){
+            <div class="col-md-4" style="border:1px solid red;">
+                <img src="@item.ImgURL" alt="img">
+            </div>
+            <div class="col-md-8" style="border:1px solid red;">
+                <p>MovieName: @item.MovieName</p><br />
+                <p>PublishYear : @item.PublishYear</p><br />
+                <p>Summary: @item.Summary</p>
+            </div>
+            @*<div class="col-md-4" style="border:1px solid red;">
+                Column
+            </div>*@
+            }
+        </div>
+    </div>
+
+    @foreach (var itemImg in Model)
+    {
+   
+        <div>
+            <img src="@itemImg.ImgURL" alt="img">
+        </div>
+
+    }
+
+    <div>
+        footer:今年是：@DateTime.Now.Year 年
+    </div>
+
+
+</body>
+
+
+

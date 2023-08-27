@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "USIndex";
+}
+
+<form>
+    <div class="bg-success text-center" style="height:45px;width:auto;">
+        <h2 style="padding:5px"><strong>-----美國電影-----</strong></h2>
+    </div>
+    <div>
+        <h5></h5>
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach (var US in Model)
+            {
+                <div class="col-md-3" style="margin:auto;">
+
+                    <div class="card" style="width:23rem; margin:auto; border:3px dashed #808080;">
+                        <img src="@US.ImgURL" class="card-img-top" style="width:100% ;height:auto" alt="...">
+                        <div class="card-body text-body-secondary" style="padding:5%">
+                            <h3 class="card-title text-center" style="background-color:#dbca99;">@US.MovieName</h3>
+                            <p class="card-text" style="height:150px;width:auto;">@Html.Raw(US.Summary)</p>
+                        </div>
+                        <div class="card-footer text-body-secondary text-center" style="padding:5%">
+                            <a href="@US.Trailer" class="btn btn-secondary" target="_blank" style="display: block; width: 100%; background-color:burlywood">預告片</a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</form>
+
+
