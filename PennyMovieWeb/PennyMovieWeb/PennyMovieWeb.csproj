@@ -236,6 +236,7 @@
     <Content Include="Views\MainDemo\JPIndex.cshtml" />
     <Content Include="Views\MainDemo\USIndex.cshtml" />
     <Content Include="Views\Login\RegisterIndex.cshtml" />
+    <Content Include="Views\Login\LoginIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
